@@ -1,0 +1,5 @@
+Total Months : 41
+Total Revenue 18971412
+Average Percent Change: 0.19399241723920382
+Biggest Revenue Increase:1195111
+Biggest Percentage Decrease:-1172384
