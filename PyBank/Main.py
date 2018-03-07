@@ -7,8 +7,8 @@
 
 #The total number of months included in the dataset (count)
 #The total amount of revenue gained over the entire period (sum)
-#The average change in revenue between months over the entire period (delta)
-#The greatest increase in revenue (date and amount) over the entire period (??)
+#The average change in revenue between months over the entire period 
+#The greatest increase in revenue (date and amount) over the entire period 
 #The greatest decrease in revenue (date and amount) over the entire period
 
 import pandas as pd
@@ -76,7 +76,7 @@ banks_df.head()
 # In[ ]:
 
 
-#Praise Google
+#Biggest price increase
 big_increase = banks_df.loc[banks_df['Revenue'].idxmax()]
 big_increase
 
@@ -84,7 +84,7 @@ big_increase
 # In[ ]:
 
 
-#Praise Google
+#Biggest price decrease
 big_decrease = banks_df.loc[banks_df['Revenue'].idxmin()]
 big_decrease
 
@@ -92,14 +92,14 @@ big_decrease
 # In[ ]:
 
 
-#Convert to numeric (for no reason)
+#Convert to numeric 
 banks_df["Percent Change"] = pd.to_numeric(banks_df["Percent Change"])
 
 
 # In[ ]:
 
 
-#Convert to numeric (For no reason)
+#Convert to numeric 
 banks_df["Revenue"] = pd.to_numeric(banks_df["Revenue"])
 banks_df.dtypes
 
