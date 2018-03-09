@@ -1,5 +1,12 @@
+------data 1-------
 Total Months : 41
 Total Revenue 18971412
 Average Percent Change: 0.19399241723920382
 Biggest Revenue Increase:1195111
 Biggest Percentage Decrease:-1172384
+-------data 2-------
+Total Months : 86
+Total Revenue : 40101634
+Average Percent Change:-0.3168362729793804
+Biggest Revenue Increase:1181050
+Biggest Revenue Decrease:-1038468
