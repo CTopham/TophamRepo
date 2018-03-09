@@ -1,0 +1,124 @@
+Sub Topham_VBA_Practice()
+
+'Declaring Variables
+Dim TickerName As String
+Dim VolumeCount As Double
+Dim RowLocation As Integer
+Dim ws As Worksheet
+Dim OpenCount As Double
+Dim CloseCount As Double
+
+
+'WS Loop
+For Each ws In Worksheets
+
+'Headers
+Dim TickerCol As String
+Dim VolCol As String
+Dim OCount As String
+Dim CCount As String
+Dim Percent As String
+
+Percent = "Percent Change"
+OCount = "Open Count"
+CCount = "Close Count"
+TickerCol = "Ticker"
+VolCol = "Volume"
+ws.Range("M1").Value = Percent
+ws.Range("K1").Value = OCount
+ws.Range("L1").Value = CCount
+ws.Range("I1").Value = TickerCol
+ws.Range("J1").Value = VolCol
+
+
+
+'Setting Variables
+VolumeCount = 0
+RowLocation = 2
+OpenCount = 0
+CloseCount = 0
+
+
+
+'Loop Time
+
+For i = 2 To 797711
+
+If ws.Cells(i + 1, 1).Value <> ws.Cells(i, 1).Value Then
+'Copy the info to variables
+TickerName = ws.Cells(i, 1).Value
+VolumeCount = VolumeCount + ws.Cells(i, 7).Value
+OpenCount = OpenCount + ws.Cells(i + 1, 3).Value
+CloseCount = CloseCount + ws.Cells(i, 6).Value
+'Paste into the cells we want
+ws.Range("I" & RowLocation).Value = TickerName
+ws.Range("J" & RowLocation).Value = VolumeCount
+ws.Range("K" & RowLocation).Value = OpenCount
+ws.Range("L" & RowLocation).Value = CloseCount
+
+'Resets
+VolumeCount = 0
+OpenCount = 0
+CloseCount = 0
+
+'Move to next Row to paste in
+RowLocation = RowLocation + 1
+
+Else
+
+VolumeCount = VolumeCount + ws.Cells(i, 7).Value
+
+
+
+End If
+
+Next i
+
+
+
+'getting the percentage
+Dim OpenDouble As Double
+Dim CloseDouble As Double
+Dim RowLocationB As Integer
+Dim Percentage As Double
+
+RowLocationB = 2
+OpenDouble = 0
+CloseDouble = 0
+Percentage = 0
+
+
+
+For j = 2 To 3169
+
+If Cells(j + 1, 9).Value <> ws.Cells(j, 9).Value Then
+
+'Copy
+OpenDouble = OpenDouble + ws.Cells(j, 11).Value
+CloseDouble = CloseDouble + ws.Cells(j, 12).Value
+
+If CloseDouble <> "0" Then
+Percentage = (CloseDouble - OpenDouble) / (CloseDouble)
+
+
+End If
+
+ws.Cells(j, 13).Value = Percentage
+
+'Clear
+Percentage = 0
+CloseDouble = 0
+OpenDouble = 0
+
+RowLocationB = RowLocationB + 1
+
+End If
+
+Next j
+
+
+
+Next ws
+
+
+End Sub
