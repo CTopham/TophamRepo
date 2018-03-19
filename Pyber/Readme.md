@@ -40,136 +40,10 @@ city_df.head()
 ```
 
 
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>city</th>
-      <th>driver_count</th>
-      <th>type</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Tammyburgh</td>
-      <td>11</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Melissaborough</td>
-      <td>15</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Port Brianborough</td>
-      <td>62</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>New Katherine</td>
-      <td>68</td>
-      <td>Urban</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Lake Charlesside</td>
-      <td>65</td>
-      <td>Urban</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
 ```python
 city_df = city_df.sort_values("driver_count",ascending=True)
 city_df.head()
 ```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>city</th>
-      <th>driver_count</th>
-      <th>type</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>122</th>
-      <td>Sheltonhaven</td>
-      <td>1</td>
-      <td>Rural</td>
-    </tr>
-    <tr>
-      <th>69</th>
-      <td>Robertsonhaven</td>
-      <td>1</td>
-      <td>Suburban</td>
-    </tr>
-    <tr>
-      <th>101</th>
-      <td>Kaylaton</td>
-      <td>1</td>
-      <td>Suburban</td>
-    </tr>
-    <tr>
-      <th>118</th>
-      <td>Davidsonfurt</td>
-      <td>1</td>
-      <td>Rural</td>
-    </tr>
-    <tr>
-      <th>110</th>
-      <td>Joshuaview</td>
-      <td>1</td>
-      <td>Rural</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
 
 
 ```python
@@ -179,87 +53,6 @@ merge_df = merge_df.sort_values("city")
 merge_df = merge_df.reset_index(drop=True)
 merge_df.head()
 ```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>city</th>
-      <th>date</th>
-      <th>fare</th>
-      <th>ride_id</th>
-      <th>driver_count</th>
-      <th>type</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Adamschester</td>
-      <td>2017-01-01 13:43:33</td>
-      <td>48.33</td>
-      <td>5433192651081</td>
-      <td>27</td>
-      <td>Suburban</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Adamschester</td>
-      <td>2017-01-02 16:19:03</td>
-      <td>31.09</td>
-      <td>7079690106388</td>
-      <td>27</td>
-      <td>Suburban</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Adamschester</td>
-      <td>2017-01-01 04:06:31</td>
-      <td>12.97</td>
-      <td>1970667817299</td>
-      <td>27</td>
-      <td>Suburban</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Adamschester</td>
-      <td>2017-01-03 06:15:43</td>
-      <td>39.39</td>
-      <td>8562770005118</td>
-      <td>27</td>
-      <td>Suburban</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Adamschester</td>
-      <td>2017-01-01 16:49:22</td>
-      <td>14.17</td>
-      <td>6979569807501</td>
-      <td>27</td>
-      <td>Suburban</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
 
 
 ```python
@@ -272,28 +65,11 @@ city_df.dtypes
 ```
 
 
-
-
-    city            object
-    driver_count     int64
-    type            object
-    dtype: object
-
-
-
-
 ```python
 #Converting type to integer
 merge_df['type'] = merge_df['type'].astype(int)
 merge_df['type'].dtypes
 ```
-
-
-
-
-    dtype('int32')
-
-
 
 
 ```python
@@ -303,17 +79,30 @@ merge_df.count()
 ```
 
 
+```python
+#Looping to grab some random samples in the Fares column
+div = 20
+lim = len(merge_df) // div
+samples = [merge_df.iloc[(i * div):(i * div + div), 2]
+           for i in range(0, lim)]
+```
 
 
-    city            238
-    date            238
-    fare            238
-    ride_id         238
-    driver_count    238
-    type            238
-    dtype: int64
+```python
+# Checking Standard Error Measurements
+means = [s.mean() for s in samples]
+sem = [s.sem() for s in samples]
+fig, ax = plt.subplots()
+ax.errorbar(np.arange(0, len(means)), means, yerr=sem, fmt="o", color="b",
+            alpha=0.5, label="Mean of Fares")
 
+ax.set_xlim(-0.5, len(means))
+ax.set_xlabel("Sample Number")
+ax.set_ylabel("Mean of Fares")
 
+plt.legend(loc="best", fontsize="small", fancybox=True)
+plt.show()
+```
 
 
 ```python
@@ -321,15 +110,6 @@ merge_df.count()
 fare_per_city = merge_df.groupby(['city'], as_index=False).mean()[['city','fare']]
 fare_per_city.count()
 ```
-
-
-
-
-    city    102
-    fare    102
-    dtype: int64
-
-
 
 
 ```python
@@ -341,15 +121,6 @@ ride_per_city.count()
 ```
 
 
-
-
-    city          102
-    ride count    102
-    dtype: int64
-
-
-
-
 ```python
 #grouping by city type
 city_type = merge_df.groupby(['city'], as_index=False).mean()[['city','type']]
@@ -357,29 +128,11 @@ city_type.count()
 ```
 
 
-
-
-    city    102
-    type    102
-    dtype: int64
-
-
-
-
 ```python
 #Grabbing drivers per city
 drivers_per_city = merge_df.groupby(['city'], as_index=False).mean()[['city','driver_count']]
 drivers_per_city.count()
 ```
-
-
-
-
-    city            102
-    driver_count    102
-    dtype: int64
-
-
 
 
 ```python
