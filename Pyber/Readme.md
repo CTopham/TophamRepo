@@ -41,12 +41,6 @@ city_df.head()
 
 
 ```python
-city_df = city_df.sort_values("driver_count",ascending=True)
-city_df.head()
-```
-
-
-```python
 #Merging on 'city
 merge_df = pd.merge(ride_df, city_df, how='outer', on='city')
 merge_df = merge_df.sort_values("city")
@@ -61,14 +55,13 @@ merge_df['type'] = merge_df['type'].str.replace('Urban','1')
 merge_df['type'] = merge_df['type'].str.replace('Suburban','2')
 merge_df['type'] = merge_df['type'].str.replace('Rural','3')
 
-city_df.dtypes
 ```
 
 
 ```python
 #Converting type to integer
 merge_df['type'] = merge_df['type'].astype(int)
-merge_df['type'].dtypes
+merge_df['type'].unique()
 ```
 
 
@@ -106,56 +99,75 @@ plt.show()
 
 
 ```python
-#Fair per city breakdown
-fare_per_city = merge_df.groupby(['city'], as_index=False).mean()[['city','fare']]
-fare_per_city.count()
+#Breaking down by city types
+#--------------------------
+#urban Breakdown
+urbangroup = merge_df.loc[merge_df['type'] == 1,:]
+urbangroup = urbangroup.sort_values("city")
+urbangroup = urbangroup.reset_index(drop=True)
+urbangroup.head()
 ```
 
 
 ```python
-#grouping by city and ride, converting to df, renaming column and deleting old column
-ride_per_city = merge_df.groupby(['city'], as_index=False).count()[['city','ride_id']]
-ride_per_city['ride count'] = ride_per_city['ride_id']
-del ride_per_city['ride_id']
-ride_per_city.count()
+#suburban Breakdown
+suburbangroup = merge_df.loc[merge_df['type'] == 2,:]
+suburbangroup = suburbangroup.sort_values("city")
+suburbangroup = suburbangroup.reset_index(drop=True)
+suburbangroup.head()
 ```
 
 
 ```python
-#grouping by city type
-city_type = merge_df.groupby(['city'], as_index=False).mean()[['city','type']]
-city_type.count()
+#Rural Breakdown
+ruralgroup = merge_df.loc[merge_df['type'] == 3,:]
+ruralgroup = ruralgroup.sort_values("city")
+ruralgroup = ruralgroup.reset_index(drop=True)
+ruralgroup.head()
 ```
 
 
 ```python
-#Grabbing drivers per city
-drivers_per_city = merge_df.groupby(['city'], as_index=False).mean()[['city','driver_count']]
-drivers_per_city.count()
+#Taking the above merges on types and grouping them by data required on the bubble chart then placing them in variables for plotting
+#----------------------------------------------------------
+#Urban Fair per city breakdown
+ufares = urbangroup.groupby(['city'], as_index=False).mean()[['city','fare','driver_count']]
+#groupin by ride since its a count
+urides = urbangroup.groupby(['city'], as_index=False).count()[['ride_id',]]
+urides['ride count'] = urides['ride_id']
+del urides['ride_id']
+#urban x y s c setup
+x = ufares['driver_count']
+y = ufares['fare']
+s = urides['ride count']
 ```
 
 
 ```python
-x = drivers_per_city['driver_count']
-
+#suburban Fair per city breakdown
+sfares = suburbangroup.groupby(['city'], as_index=False).mean()[['city','fare','driver_count']]
+#groupin by ride since its a count
+srides = suburbangroup.groupby(['city'], as_index=False).count()[['ride_id',]]
+srides['ride count'] = srides['ride_id']
+del srides['ride_id']
+#suburban x y s c setup
+sx = sfares['driver_count']
+sy = sfares['fare']
+ss = srides['ride count']
 ```
 
 
 ```python
-y = fare_per_city['fare']
-
-```
-
-
-```python
-s = ride_per_city['ride count']
-
-```
-
-
-```python
-c = city_type['type']
-
+#rural Fair per city breakdown
+rfares = ruralgroup.groupby(['city'], as_index=False).mean()[['city','fare','driver_count']]
+#groupin by ride since its a count
+rrides = ruralgroup.groupby(['city'], as_index=False).count()[['ride_id',]]
+rrides['ride count'] = rrides['ride_id']
+del rrides['ride_id']
+#rural x y s c setup
+rx = rfares['driver_count']
+ry = rfares['fare']
+rs = rrides['ride count']
 ```
 
 
@@ -166,18 +178,23 @@ c = city_type['type']
 # X axis is the average amount of drivers per city.
 # Y is the Average Fares per city.
 # C  is the bubble area: sum of rides in a city.
-# Z is the color of the bubble - the darker the color the more rural the city.
+# Z is the color of the bubble - 
 
 plt.title("Car Sharing")
 plt.xlabel('Drivers per city')
 plt.ylabel('Fare')
-plt.scatter(x, y, s=s*200, c=c, cmap="Blues", alpha=0.5, edgecolors="grey", linewidth=1,)
-figsize=(100,100)
-Urban = mpatches.Patch(color='white', label='Urban')
-Suburban = mpatches.Patch(color='dodgerblue', label='Suburban')
-Rural = mpatches.Patch(color='blue', label='Rural')
+plt.scatter(x, y, s=s*200, c='lightcoral', alpha=0.5, edgecolors="grey", linewidth=1,)
+plt.scatter(sx, sy, s=ss*200, c='gold', alpha=0.5, edgecolors="grey", linewidth=1,)
+plt.scatter(rx, ry, s=rs*200, c='lightskyblue', alpha=0.5, edgecolors="grey", linewidth=1,)
+Urban = mpatches.Patch(color='lightcoral', label='Urban')
+Suburban = mpatches.Patch(color='gold', label='Suburban')
+Rural = mpatches.Patch(color='lightskyblue', label='Rural')
 plt.legend(handles=[Urban,Suburban,Rural], loc=1)
+
+
+
 plt.show()
+
 ```
 
 
@@ -215,10 +232,10 @@ ridecount_df
 
 ```python
 #merging into one DF
-piemerge_df = pd.merge(pie_df, ridecount_df, how='outer', on='type')
-piemerge_df = piemerge_df.sort_values("type")
-piemerge_df = piemerge_df.reset_index(drop=True)
-piemerge_df.head()
+finalpie_df = pd.merge(pie_df, ridecount_df, how='outer', on='type')
+finalpie_df = finalpie_df.sort_values("type")
+finalpie_df = finalpie_df.reset_index(drop=True)
+finalpie_df.head()
 ```
 
 
@@ -226,9 +243,10 @@ piemerge_df.head()
 #Total fares by city type
 colors = ['Gold', 'LightSkyBlue','LightCoral']
 explode = (0, 0, 0.05)
-plt.pie(piemerge_df['fare'],labels=piemerge_df['type'],explode=explode, colors=colors,
+plt.pie(finalpie_df['fare'],labels=finalpie_df['type'],explode=explode, colors=colors,
         autopct="%1.1f%%", shadow=True, startangle=40)
 plt.axis("equal")
+plt.savefig("Fares.png")
 plt.show
 ```
 
@@ -237,9 +255,10 @@ plt.show
 #Total rides by city type
 colors = ['Gold', 'LightSkyBlue','LightCoral']
 explode = (0, 0, 0.05)
-plt.pie(piemerge_df['ride_id'],labels=piemerge_df['type'],explode=explode, colors=colors,
+plt.pie(finalpie_df['ride_id'],labels=finalpie_df['type'],explode=explode, colors=colors,
         autopct="%1.1f%%", shadow=True, startangle=40)
 plt.axis("equal")
+plt.savefig("Rides.png")
 plt.show
 ```
 
@@ -247,9 +266,10 @@ plt.show
 ```python
 #Total drivers by city type
 colors = ['Gold', 'LightSkyBlue','LightCoral']
-explode = (0.1, 0.09, 0.09)
-plt.pie(piemerge_df['driver_count'],labels=piemerge_df['type'],explode=explode, colors=colors,
+explode = (0.0,0.0, 0.05)
+plt.pie(finalpie_df['driver_count'],labels=finalpie_df['type'],explode=explode, colors=colors,
         autopct="%1.1f%%", shadow=True, startangle=40)
 plt.axis("equal")
+plt.savefig("Drivers.png")
 plt.show
 ```
