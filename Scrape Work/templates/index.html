@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mars Data</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+        <div class="container">
+
+                <div class="jumbotron text-center">
+                  <h1>Lets Move to Mars</h1>
+                  <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Mars Data</a></p>
+                </div>
+
+                    <!-- Craigslist Listings -->
+            <div class="row">
+            <div class="col-sm-9">
+        
+              <h2 class="heading">{{listing.News_Title}}</h2>
+              <h4 class="heading">{{listing.Newsp}}</h4>
+            
+ <!--  ++++++++++++++++++++++++++++++++test+++++++++++++++++++++++++++++++++++++++++++++++++++   --> 
+ <br>
+ <br>
+ <div style = padding-left:80px;>
+ <img src= {{ listing.featured_image_url }} width= "650" height="400" alt="Featured Mars Image">
+</div>
+</div>
+ <!--  ++++++++++++++++++++++++++++++++test+++++++++++++++++++++++++++++++++++++++++++++++++++   -->
+            <div class="col-sm-3">
+                    <div class="panel panel-default">
+                            <div class="panel-heading">Marshan Weather</div>
+                            <div class="panel-body">
+                            <p font-size: 30px>{{listing.New_Tweet}}</p>
+                            
+<!--  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   -->
+                            <table border="1" class="dataframe">
+                                <thead>
+                                  <tr style="text-align: right;">
+                                    <th></th>
+
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    
+                                    <td>Equatorial Diameter:</td>
+                                    <td>6,792 km\n</td>
+                                  </tr>
+                                  <tr>
+                                   
+                                    <td>Polar Diameter:</td>
+                                    <td>6,752 km\n</td>
+                                  </tr>
+                                  <tr>
+                                    
+                                    <td>Mass:</td>
+                                    <td>6.42 x 10^23 kg (10.7% Earth)</td>
+                                  </tr>
+                                  <tr>
+                                    
+                                    <td>Moons:</td>
+                                    <td>2 (Phobos &amp; Deimos)</td>
+                                  </tr>
+                                  <tr>
+                                   
+                                    <td>Orbit Distance:</td>
+                                    <td>227,943,824 km (1.52 AU)</td>
+                                  </tr>
+                                  <tr>
+                                   
+                                    <td>Orbit Period:</td>
+                                    <td>687 days (1.9 years)\n</td>
+                                  </tr>
+                                  <tr>
+                                    
+                                    <td>Surface Temperature:</td>
+                                    <td>-153 to 20 �C</td>
+                                  </tr>
+                                  <tr>
+                                    
+                                    <td>First Record:</td>
+                                    <td>2nd millennium BC</td>
+                                  </tr>
+                                  <tr>
+                                    
+                                    <td>Recorded By:</td>
+                                    <td>Egyptian astronomers</td>
+                                  </tr>
+                                </tbody>
+                        </table>
+<!--  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   -->
+</div>
+</div>
+</div>
+  
+<!--  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   -->
+        
+
+<div class="col-sm-12">
+        <div class="panel panel-default">
+        <div class= "panel-heading text-center panel-relative"><bold>Mars Photos</bold></div>
+        <div class="panel-body">
+
+<div class="row">
+<div class="col-sm-6">
+        <div class="panel panel-default">
+        <div class="panel-heading">{{listing.cerb_title}}</div>
+        <div class="panel-body"style = padding-left:80px;>
+        <img src= {{ listing.cerb_img }}width= "750" height="400" alt="Cerberus">
+
+</div>   
+</div>
+</div>
+
+<div class="col-sm-6">
+                <div class="panel panel-default">
+                <div class="panel-heading">{{listing.vm_title}}</div>
+                <div class="panel-body"style = padding-left:80px;>
+                <img src= {{ listing.vm_img }}width= "750" height="400" alt="VM">
+
+
+<!--  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   -->
+</div>   
+</div>
+</div>
+<div class="row">
+                <div class="col-sm-6">
+                        <div class="panel panel-default">
+                        <div class="panel-heading">{{listing.schia_title}}</div>
+                        <div class="panel-body"style = padding-left:80px;>
+                        <img src= {{ listing.schia_img }}width= "750" height="400" alt="Schia">
+                
+                </div>   
+                </div>
+                </div>
+                
+                <div class="col-sm-6">
+                                <div class="panel panel-default">
+                                <div class="panel-heading">{{listing.syrtus_title}}</div>
+                                <div class="panel-body"style = padding-left:80px;>
+                                <img src= {{ listing.syrtus_img }}width= "750" height="400" alt="Syrtus">
+
+
+
+
+</body>
+</html>
