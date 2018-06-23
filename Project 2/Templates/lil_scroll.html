@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=500" />
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	    crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	    crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	    crossorigin="anonymous"></script>
+	<script type="text/javascript" src="/static/ScrollMagic.js"></script>
+	<script type="text/javascript" src="static/debug.addIndicators.js"></script>
+	
+	
+<!-- ============================================================================================================== -->
+<style>
+		h1 {
+			color:rgb(38, 51, 51);
+			font-family:Georgia, 'Times New Roman', Times, serif;
+			text-align:center;
+
+		}
+		body {
+		  background-color: unset;
+		}
+		
+	th, td {
+		text-align: center;
+		padding: 8px;
+	}
+	tbody>tr:nth-child(even){background-color: #f2f2f2 !important}
+	tbody>tr:nth-child(odd){background-color: #fff !important}
+
+		
+  body, html {
+	  height: 90%;
+	  margin: 0;
+  }
+  .form-control {
+display: inline-block;
+width: 250px;
+margin-top: 50px;
+}
+.jumbotron {
+background-color: black;
+}
+h1 {
+color:white;
+}
+
+ .jumbotron {
+    background-color: olivedrab;
+    position: absolute;
+    z-index: 1;
+ } 
+
+ 
+</style>
+        <link rel="stylesheet" href="bootstrap.min.css">
+        <script src="https://unpkg.com/simple-statistics@5.0.0/dist/simple-statistics.min.js"></script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+            <!-- Importing all the Bootstrap Dependencies -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    
+  <!-- Importing all the Bootstrap Dependencies for Table Pagination-->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">   -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ============================================================================================================== -->
+</head>
+<body>
+		<nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+        
+            
+						<ul class="nav navbar-nav navbar-right">
+				
+							  <!-- <li class="dropdown">
+								  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More Options<span class="caret"></span></a>
+								  <ul class="dropdown-menu"> -->
+				
+				<!--These links do NOTHING. We need to change the names to match the files-->
+							<li><a style=padding-top:15px; href="/">Home</a></li>
+							<li><a style=padding-left:40px;padding-top:15px href="search">Name Search</a></li>
+							<li><a style=padding-right:20px;padding-left:15px;padding-top:15px href="scroll">Story Telling</a></li>
+							<li><a style=padding-right:20px;padding-top:15px href="table">Data</a></li>
+							<li><a style=padding-right:50px;padding-top:15px href="wire">Wire Chart</a></li>
+						  </ul>
+					</div>
+					</div>
+					</nav>
+	  
+			  <div class="container" style=padding-top:70px>
+				<div style="background-color: rgb(136, 221, 183) !important"  class="jumbotron">
+				  <h1 style="color:darkslategray">
+					  <b style="font-size: 50px">
+					Baby Names Through the Decades
+					  </b>
+				  </h1>
+			  
+				</div>
+
+				<div id="trigger1" class="row">
+					<div class="col-md-6">
+						<div class='pin-child' id='pin1a'>
+							<h1>
+								<strong>1880s</strong>
+							</h1>
+							<p>
+								<strong>John</strong> has stayed a consistently popular name for boys. It had a long run at number 1 for many decades and
+								continue to be in the top 10. One in every 25 Americans is named John.</P>
+							<p>
+								<strong>Mary</strong> has been one of the most popular girl names with over 3.8 million babies have been named Mary. It was
+								the number 1 or 2 girl name from the beginning of record keeping until 1965, when it started to slide.</p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin1b" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20male1880.png" alt="">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin1c" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20female1880.png" alt="">
+						</div>
+					</div>
+
+				</div>
+				<div id="trigger2" class="row">
+					<div class="col-md-6">
+						<div id='pin2a' class='pin-child'>
+							<h1>
+								<strong>1890s</strong>
+							</h1>
+							<p> The most popular boy name is James. More than 4.8 million boys have been named
+								<strong>James </strong>, nearly 3 percent of all boys born. It was number 1 from 1940-1952.</p>
+							<p>
+								<strong>Margaret</strong> was far more popular in the earlier days of record keeping but its decline in popularity has been
+								very slow and gradual, meaning that although it hasn’t made the top 10 for decades, but manages to be the 10th girl
+								name overall. Over 1 million baby girls have been named Margaret.</p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin2b" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20male1890.png" alt="">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin2c" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20female1890.png" alt="">
+						</div>
+					</div>
+
+				</div>
+				<div id="trigger3" class="row">
+					<div class="col-md-6">
+						<div id='pin3a' class='pin-child'>
+							<h1>
+								<strong>1900s</strong>
+							</h1>
+							<p>
+								<strong>William</strong> is another steady classic name, like James, and John, that has maintained its consistent level of
+								popularity. It did have a brief, minor dip in the 1980s and '90s, but it has stayed in the top 10 and 20 over the
+								decades. </p>
+							<p>The name
+								<strong> Helen </strong> reached its most popular peak in the early 1900’s when the greatest number of babies was given the
+								name in 1918. There have been only about 721K girls name Helen since 1880. </p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin3b" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20male1900.png" alt="">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin3c" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20female1900.png" alt="">
+						</div>
+					</div>
+
+				</div>
+				<div id="trigger4" class="row">
+					<div class="col-md-6">
+						<div id='pin4a' class='pin-child'>
+							<h1>
+								<strong>1910s</strong>
+							</h1>
+							<p>Like James and John,
+								<strong>Robert</strong> has stayed consistently popular over the years. It managed to stay in the top ten until the end of
+								the 1980s. In 1934 Robert, and its variations of Bobby and Bob, all made the top 100.</p>
+							<p>
+								<strong>Dorothy</strong> is the 15th most popular name where approximately 1 million girls have the name. It reached its
+								peak in 1924 when about 40 thousand babies were given the name. Those people are now 93 years old.</p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin4b" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20male1910.png" alt="">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin4c" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20female1910.png" alt="">
+						</div>
+					</div>
+
+				</div>
+				<div id="trigger5" class="row">
+					<div class="col-md-6">
+						<div id='pin5a' class='pin-child'>
+							<h1>
+								<strong>1920s</strong>
+							</h1>
+							<p>
+								<strong>Charles</strong> ranks 10th of all boy names, with over 2 million totals. It has maintained a steady general popularity
+								but hit its peak in 1929.</p>
+							<p>The name
+								<strong>Elizabeth</strong> was having its heyday in the early 1900s, it has stayed consistent over the years, resisting and
+								weathering trends, neither spiking nor dropping off in popularity. It’s the 5th most popular name.</p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin5b" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20male1920.png" alt="">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin5c" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20female1920.png" alt="">
+						</div>
+					</div>
+
+				</div>
+				<div id="trigger6" class="row">
+					<div class="col-md-6">
+						<div id='pin6a' class='pin-child'>
+							<h1>
+								<strong>1930s</strong>
+							</h1>
+							<p>
+								<strong>Richard</strong> is the 7th most popular name and stayed in the top 10 until the 1970’s. It had its biggest year
+								in 1947.</p>
+							<p>After Mary, the second most popular name for girls is
+								<strong>Patricia</strong>. Though it never made number 1 for any particular year, it stayed close to it through the baby
+								boom years, from 1946-1964. </p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin6b" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20male1930.png" alt="">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin6c" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20female1930.png" alt="">
+						</div>
+					</div>
+
+				</div>
+				<div id="trigger7" class="row">
+					<div class="col-md-6">
+						<div id='pin7a' class='pin-child'>
+							<h1>
+								<strong>1940s</strong>
+							</h1>
+							<p>
+								<strong>David</strong> has been another steady classic, but it only reached number 1 once, in 1960. But that was a big year
+								for births, so almost 86,000 babies got the name David in that year alone. </p>
+							<p>The window of popularity for
+								<strong>Linda</strong> was relatively brief, although it’s the 4th most popular name. It was mostly confined to the baby
+								boom years. It hit number 1 in 1947, after a Buddy Clark song, "Linda," topped the charts. </p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin7b" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20male1940.png" alt="">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin7c" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20female1940.png" alt="">
+						</div>
+					</div>
+
+				</div>
+
+				<div id="trigger8" class="row">
+					<div class="col-md-6">
+						<div id='pin8a' class='pin-child'>
+							<h1>
+								<strong>1950s</strong>
+							</h1>
+							<p>There were more than 450,000 baby boys named
+								<strong>Thomas</strong> in the 1950s, helping to make it the 9th most popular name. Although it managed to stay in the top
+								20 over the decades, its popularity began to decline in the 1970s.</p>
+							<p>In the early Hollywood film era, glamorous actresses like Barbara La Marr, Barbara Bedford, Barbara Kent, and Barbara
+								Stanwyck gave the name
+								<strong>Barbara</strong> a boost. It stayed in the top 10 from 1927-1958 but dropped off quickly after that.</p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin8b" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20male1950.png" alt="">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin8c" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20female1950.png" alt="">
+						</div>
+					</div>
+
+				</div>
+				<div id="trigger9" class="row">
+					<div class="col-md-6">
+						<div id='pin9a' class='pin-child'>
+							<h1>
+								<strong>1960s</strong>
+							</h1>
+							<p>
+								<strong>Michael</strong> is the most common boy name for people currently alive. It has not been out of the top 10 names
+								given to baby boys since 1943 and had an unbroken streak at number 1 from 1961 to 1998.</p>
+							<p>
+								<strong>Susan</strong> was a typical baby boom name and is the 7th most popular girl name. At its peak in 1960, over 39,000
+								baby girls were named Susan. </p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin9b" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20male1960.png" alt="">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin9c" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20female1960.png" alt="">
+						</div>
+					</div>
+
+				</div>
+				<div id="trigger10" class="row">
+					<div class="col-md-6">
+						<div id='pin10a' class='pin-child'>
+							<h1>
+								<strong>1970s</strong>
+							</h1>
+							<p>
+								<strong>Christopher</strong> is the 11th most popular boy name. Over 2.1 million boys have the name and reached it peaks
+								in the early 1980s.</p>
+							<p>
+								<strong>Jennifer</strong> was the number 1 girl name post the baby boom. and it stayed in that position from 1970 until 1984,
+								the year of its peak popularity. It probably got its long-term boost from the 1970 film
+								<i>Love Story</i>, starring Ali MacGraw as a beautiful, tragic character bearing the name.</p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin10b" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20male1970.png" alt="">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin10c" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20female1970.png" alt="">
+						</div>
+					</div>
+
+				</div>
+
+				<div id="trigger11" class="row">
+					<div class="col-md-6">
+						<div id='pin11a' class='pin-child'>
+							<h1>
+								<strong>1980s</strong>
+							</h1>
+							<p>
+								<strong>Joshua</strong> is the 22nd most popular name, but it was neither consistently popular over the whole time, nor a
+								baby boomer name. Joshua didn’t break the top 20 until the 1980s, and it achieved peak popularity in 2006.</p>
+							<p>
+								<strong>Jessica</strong>’s rise to the 8th most popular name started a little after the Jennifer craze began, but it was
+								probably bolstered by Jennifer and other popular J names like Jason and Joshua. It stayed in the top 10 through the
+								1980s and '90s.</p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin11b" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20male1980.png" alt="">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin11c" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20female1980.png" alt="">
+						</div>
+					</div>
+
+				</div>
+
+				<div id="trigger12" class="row">
+					<div class="col-md-6">
+						<div id='pin12a' class='pin-child'>
+							<h1>
+								<strong>1990s</strong>
+							</h1>
+							<p>
+								<strong>Matthew</strong> has become a classic boy name first becoming popular in the 1970s ranking in the top 25 for baby
+								names and 13th overall totals. With its religious meaning, “gift of God”, the name has widespread use across several
+								cultures.</p>
+							<p>
+								<strong>Ashley</strong> was traditionally a boy name, notably as the name of Scarlett O'Hara’s love interest in the hugely
+								popular novel and film
+								<i>Gone with the Wind</i>. It got a big boost as a girl's name in the early 1980s, when it was the name of a female
+								character on the soap opera
+								<i>The Young and the Restless</i>.</p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin12b" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20male1990.png" alt="">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin12c" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20female1990.png" alt="">
+						</div>
+					</div>
+
+				</div>
+				<div id="trigger13" class="row">
+					<div class="col-md-6">
+						<div id='pin13a' class='pin-child'>
+							<h1>
+								<strong>2000s</strong>
+							</h1>
+							<p>
+								<strong>Jacob</strong> was a rather old-fashioned sounding name when it cracked the top 100 in the mid-1970s, but after a
+								14-year run as the number 1 baby name for boys starting in 1999, it established itself as the name of a new generation.</p>
+							<p>
+								<strong>Emily</strong> spent over a decade as the number 1 girl name, from 1996-2007. it’s the 20th most popular name, with
+								over 813,000 girls given the name.</p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin13b" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20male2000.png" alt="">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin13c" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20female2000.png" alt="">
+						</div>
+					</div>
+
+				</div>
+				<div id="trigger14" class="row">
+					<div class="col-md-6">
+						<div id='pin14a' class='pin-child'>
+							<h1>
+								<strong>2010s</strong>
+							</h1>
+							<p>
+								<strong>Noah</strong> is the current number 1 boy name so far this decade, and though it only broke the top 100 starting
+								in 1995, it already ranks 82nd as the most popular of all time. It's part of a newer trend toward biblical names
+								ending in a vowel sound, like Elijah, Jonah, and Isaiah.</p>
+							<p>
+								<strong>Emma</strong> is the current number 1 name for girls in this decade and the 49th most popular girl name. It was popular
+								in the year 1900, then dropped off until its rise to the top 20 in 1999. Names go in and out of style, but Emma proves
+								that they can go out and come back after a long absence.</p>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin14b" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20male2010.png" alt="">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div id="pin14c" class='pin-child'>
+							<img width="250" class="img-thumbnail img-responsive" src="/static/top20female2010.png" alt="">
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+
+
+			<script>
+				var controller = new ScrollMagic.Controller();
+
+				$(function () {
+					var rows = $('.container .row');
+					rows.each(function (i, el) { // find all rows
+						var rowsChildren = $(el).find('.pin-child');
+						console.log($(el).attr('id'));
+
+						rowsChildren.each(function (j, child) { // find all children of each row
+							console.log($(child).attr('id'));
+							var newScene = new ScrollMagic.Scene({
+									triggerElement: '#' + $(el).attr('id'),
+									duration: 1000
+								})
+								.setPin('#' + $(child).attr('id'))
+								.addTo(controller);
+						});
+					});
+
+				});
+			</script>
+
+
+		</div>
+</body>
+
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Baby Name Mania</title>
+       
+        <script src="https://unpkg.com/simple-statistics@5.0.0/dist/simple-statistics.min.js"></script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+            <!-- Importing all the Bootstrap Dependencies -->
+            <link rel="shortcut icon" href="/static/css/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    
+  <!-- Importing all the Bootstrap Dependencies for Table Pagination-->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">   -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+          h1 {
+              color:rgb(38, 51, 51);
+              font-family:Georgia, 'Times New Roman', Times, serif;
+              text-align:center;
+
+          }
+          body {
+            background-color: unset;
+          }
+          
+      th, td {
+          text-align: center;
+          padding: 8px;
+      }
+      tbody>tr:nth-child(even){background-color: #f2f2f2 !important}
+      tbody>tr:nth-child(odd){background-color: #fff !important}
+
+          
+    body, html {
+        height: 90%;
+        margin: 0;
+    }
+    .form-control {
+  display: inline-block;
+  width: 250px;
+  margin-top: 50px;
+}
+.jumbotron {
+  background-color: black;
+}
+h1 {
+  color:white;
+}
+
+     
+        </style>
+</head>
+      
+<body>
+		<nav class="navbar navbar-default">
+                <div class="container-fluid">
+        
+            
+                  <ul class="nav navbar-nav navbar-right">
+          
+                        <!-- <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More Options<span class="caret"></span></a>
+                            <ul class="dropdown-menu"> -->
+          
+          <!--These links do NOTHING. We need to change the names to match the files-->
+                      <li><a style=padding-top:15px; href="/">Home</a></li>
+                      <li><a style=padding-left:40px;padding-top:15px href="search">Name Search</a></li>
+                      <li><a style=padding-right:20px;padding-left:15px;padding-top:15px href="scroll">Story Telling</a></li>
+					  <li><a style=padding-right:20px;padding-top:15px href="table">Data</a></li>
+					  <li><a style=padding-right:50px;padding-top:15px href="wire">Wire Chart</a></li>
+                    </ul>
+              </div>
+              </div>
+              </nav>
+
+        <div class="container">
+          <div style="background-color: rgb(136, 221, 183) !important"  class="jumbotron">
+            <h1 style="color:darkslategray">
+                <b style="font-size: 50px">
+              Baby Names Through the Decades
+                </b>
+            </h1>
+        
+          </div>
+
+</body>
+
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script>
+  <script>
+
+
+// Encapsulate the word cloud functionality
+
+function wordCloud(selector) {
+
+    var fill = d3.scale.category20();
+
+    //Construct the word cloud's SVG element
+    var svg = d3.select(selector).append("svg")
+        .attr("width", 2000)
+        .attr("height", 1000)
+        .append("g")
+        .attr("transform", "translate(250,250)");
+
+
+    //Draw the word cloud
+    function draw(words) {
+        var cloud = svg.selectAll("g text")
+                        .data(words, function(d) { return d.text; })
+
+        //Entering words
+        cloud.enter()
+            .append("text")
+            .style("font-family", "Georgia")
+            .style("fill", function(d, i) { return fill(i); })
+            .attr("text-anchor", "middle")
+            .attr('font-size', 1)
+            .text(function(d) { return d.text; });
+
+        //Entering and existing words
+        cloud
+            .transition()
+                .duration(600)
+                .style("font-size", function(d) { return d.size + "px"; })
+                .attr("transform", function(d) {
+                    return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                })
+                .style("fill-opacity", 1);
+
+        //Exiting words
+        cloud.exit()
+            .transition()
+                .duration(200)
+                .style('fill-opacity', 1e-6)
+                .attr('font-size', 1)
+                .remove();
+    }
+
+
+   
+    return {
+
+        //Recompute the word cloud for a new set of words. This method will
+        // asycnhronously call draw when the layout has been computed.
+       
+        update: function(words) {
+            d3.layout.cloud().size([4000, 1000])
+                .words(words)
+                .padding(10)
+                .rotate(function() { return ~~(Math.random() * 2) * 90; })
+                .font("Impact")
+                .fontSize(function(d) { return d.size; })
+                .on("end", draw)
+                .start();
+        }
+    }
+
+}
+
+//Name Data
+var words = ["William, Joseph, James, John, Elizabeth, Robert, David, Mary, Thomas, Charles, Michael, Daniel, Margaret, Edward, Paul, Richard, George, Frank, Alice, Ruth, Sarah, Walter, Henry, Dorothy, Grace, Matthew, Helen, Anna, Christopher, Arthur, Donald, Kenneth, Anthony, Barbara, Harry, Emma, Florence, Frances, Jennifer, Patricia, Albert, Harold, Marie, Stephanie, Carol, Virginia, Mark, Karen, Nicholas, Ashley, Raymond, Betty, Fred, Sandra, Ronald, Kimberly, Ryan, Jessica, Steven, Emily, Andrew, Evelyn, Clarence, Shirley, Jacob, Linda, Bertha, Susan, Annie, Donna, Ethel, Michelle, Lillian, Nicole, Edna, Amanda, Brian, Lauren, Mildred, Joshua, Nancy, Melissa, Olivia, Rachel, Bessie, Laura, Jeffrey, Christina, Gary, Taylor, Ella, Ava, Mabel, Kevin, Brandon, Alexander, Jonathan, Amber, Scott, Jason"
+    ]
+
+//remove punctuation, create random sizes
+function getWords(i) {
+    return words[i]
+            .replace(/[!\.,:;\?]/g, '')
+            .split(' ')
+            .map(function(d) {
+                return {text: d, size: 10 + Math.random() * 60};
+            })
+}
+
+//This method tells the word cloud to redraw with a new set of words.
+function showNewWords(vis, i) {
+    i = i || 0;
+
+    vis.update(getWords(i ++ % words.length))
+    setTimeout(function() { showNewWords(vis, i + 1)}, 2000)
+}
+
+//Create a new instance of the word cloud visualisation.
+var myWordCloud = wordCloud('body');
+
+//Start cycling through the demo data
+showNewWords(myWordCloud);
+
+</script>
