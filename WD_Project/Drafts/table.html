@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>UFO Finder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>   
+  
+  <style>
+  * {
+  box-sizing: border-box;
+  font-family: Ubuntu, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* The wrapper contains all of the page's content besides the footer, which is pushed to the bottom of the page */
+.wrapper {
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 130px;
+  overflow: auto;
+}
+
+/* The footer is positioned at the bottom of the page */
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-height: 100px;
+  background: #4e5d6c;
+}
+
+/* The code styles the text at the bottom of the footer */
+.footer > .bottom {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 5px;
+  background: #1b3146;
+}
+
+
+
+/* Adding styles to the aside and filter form */
+.ufo-form {
+  margin-top: 50px;
+}
+
+.filter .panel-body {
+  padding: 0;
+}
+
+.filter {
+  margin-top: 10px;
+}
+
+select {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  color: #8e979f;
+  outline: none;
+}
+
+/* When the page intially loads, hide the table. It will be made visible with JavaScript once the data is ready */
+#ufo-table {
+  visibility: hidden;
+}
+
+#table-area th {
+  text-align: center;
+}
+
+#table-area th:first-child,
+#table-area th:nth-child(2),
+#table-area th:nth-child(6) {
+  min-width: 70px;
+}
+
+.loader {
+  margin-top: 50px;
+}
+
+.margin-top-50 {
+  margin-top: 50px;
+}
+
+/* The styles for the parallax */
+.hero {
+  position: relative;
+  height: 550px;
+  padding: 20px;
+  margin: 0;
+  background: black;
+  background-image: url("../images/nasa.jpg");
+  background-attachment: fixed;
+  background-position: bottom center;
+  background-size: cover;
+}
+
+.hero h1 {
+  margin-top: 200px;
+  font-size: 0.1rem;
+  animation: title 4.2s forwards linear;
+}
+
+.hero p {
+  font-size: 2rem;
+  opacity: 0;
+  animation: subtitle 2.2s forwards linear;
+  animation-delay: 5s;
+}
+
+
+
+  .pagination li {
+    font-size: 0.6em;
+  }
+
+  .pagination > li > a {
+    padding: 4px 8px;
+  }
+
+  .hero h1 {
+    animation: smaller-title 1.2s forwards linear;
+  }
+}
+
+/* keyframe animations which will be used to animate the title */
+@keyframes title {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    font-size: 7.5rem;
+    opacity: 1;
+  }
+}
+
+@keyframes smaller-title {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    font-size: 5.5rem;
+    opacity: 1;
+  }
+}
+
+@keyframes subtitle {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div></div>
+    
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container" style="height: 110px;">
+<!-- =======================Nav Bar Buttons=================================== -->
+<Center style="padding-left: 100px">
+<a class="card" href="https://www.w3schools.com"><img border="0" alt="W3Schools" style="padding-right: 100px" src="https://github.com/CTopham/Personal-Repo/blob/master/MSB%20Breakdown/icon/Home.png?raw=true" width="100" height="100"></a>
+<a href="https://www.w3schools.com"><img border="0" alt="W3Schools" style="padding-right: 100px" src="https://github.com/CTopham/Personal-Repo/blob/master/MSB%20Breakdown/icon/Leaflet.png?raw=true" width="100" height="100"></a>
+<a href="https://www.w3schools.com"><img border="0" alt="W3Schools" style="padding-right: 100px" src="https://github.com/CTopham/Personal-Repo/blob/master/MSB%20Breakdown/icon/ML.png?raw=true" width="100" height="100"></a>
+<a href="https://www.w3schools.com"><img border="0" alt="W3Schools" style="padding-right: 100px" src="https://github.com/CTopham/Personal-Repo/blob/master/MSB%20Breakdown/icon/api.png?raw=true" width="100" height="100"></a>
+<a href="https://www.w3schools.com"><img border="0" alt="W3Schools" style="padding-right: 100px" src="https://github.com/CTopham/Personal-Repo/blob/master/MSB%20Breakdown/icon/tble.png?raw=true" width="100" height="100"></a>
+</Center>    
+</div>
+</nav>
+</div>
+
+  <div class="wrapper">
+
+    <div class="hero text-center">
+      <h1>You Want Data?</h1>
+      <p>We got that</p>
+    </div>
+    <div class="container">
+      <div class="row margin-top-50">
+        <div class="col-md-2">
+          <aside class="filter">
+            <div class="panel panel-default">
+           
+              <div class="panel-body">
+                <div class="form-group">
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <label for="type-search">Enter a Type</label>
+                      <input class="form-control" id="type-search" type="text" placeholder="Volcano">
+                    </li>
+                    <li class="list-group-item">
+                      <label for="rating-search">Enter a Rating</label>
+                      <input class="form-control" id="rating-search" type="text" placeholder="5">
+                    </li>
+                    <li class="list-group-item">
+                      <label for="latitude-search">Enter a Latitude</label>
+                      <input class="form-control" id="latitude-search" type="text" placeholder="120.000">
+                    </li>
+                    <li class="list-group-item">
+                      <label for="longitude-search">Select a Longitude</label>
+                      <input class="form-control" id="longitude-search" type="text" placeholder="120.000">
+                    <option default value=" ">all</option>
+                  </select>
+                    </li>
+                    <li class="list-group-item">
+                      <label for="year-search">Select a Year</label>
+                      <select id="year-search">
+                    <option default value=" ">all</option>
+                  </select>
+                    </li>
+                    <li class="list-group-item">
+                      <label for="num-results">Results Per Page</label>
+                      <select id="num-results">
+                    <option default value="100">100</option>
+                    <option value="50">50</option>
+                    <option value="25">25</option>
+                  </select>
+                    </li>
+                    <li class="list-group-item">
+                      <button id="filter-submit" class="btn btn-success">Update Search</button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+        <div class="col-md-10">
+          <div id="table-area" class="">
+            <h1 class="text-center loader">Loading...</h1>
+            <table id="wd-table" class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="table-head">Type</th>
+                  <th class="table-head">Rating</th>
+                  <th class="table-head">Latitude</th>
+                  <th class="table-head">Longitude</th>
+                  <th class="table-head">Year</th>
+                  <th class="table-head">Magnitude</th>
+                  <th class="table-head">Mass</th>
+                  <th class="table-head">VEI</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-sm-offset-0 col-md-10 col-md-offset-2 text-center pagination-container">
+          <ul class="pagination">
+          </ul>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <span class="bottom">Data</span>
+    </footer>
+  </div>
+  <script src="data.js"></script>
+  <script src="table.js"></script>
+</body>
+
+</html>

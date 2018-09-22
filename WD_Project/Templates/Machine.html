@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flask Plotlyjs Example</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>   
+    <style>
+            body, html {
+                height: 100%;
+                margin: 0;
+            }
+            
+            .bg {
+                /* The image used */
+                background-image: url("http://paperlief.com/images/meteor-shower-gif-wallpaper-3.jpg");
+            
+                /* Full height */
+                height: 100%; 
+            
+                /* Center and scale the image nicely */
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            div.graph {
+    width:800px;
+    margin: auto;
+   
+}
+</style>
+<!-- ===============================slide================================================ -->
+<style>
+    @keyframes slideInFromLeft {
+   0% {
+       transform: translateX(-100%);
+   }
+   100% {
+       transform: translateX(0);
+   }
+    }
+
+.graph {
+    animation: 4s ease-out 0s 1 slideInFromLeft;
+    padding: 30px;
+}
+</style>
+</head>
+<!-- =============================Button Hovers===================================== -->
+<style type="text/css">
+    .home {
+        align-content: center;
+        width: 150px;
+        height: 150px;
+       
+
+        background: url("https://github.com/CTopham/Personal-Repo/blob/master/MSB%20Breakdown/icon/Home.png?raw=true") no-repeat;
+        display: inline-block;
+       
+    }
+    .home:hover {
+        background: url("https://github.com/CTopham/Personal-Repo/blob/master/MSB%20Breakdown/icon/Hover_home.png?raw=true") no-repeat;
+    }
+    /* ============================ */
+    .leaflet {
+        align-content: center;
+        width: 150px;
+        height: 150px;
+       
+
+        background: url("https://github.com/CTopham/Personal-Repo/blob/master/MSB%20Breakdown/icon/Leaflet.png?raw=true") no-repeat;
+        display: inline-block;
+        
+    }
+    .leaflet:hover {
+        background: url("https://github.com/CTopham/Personal-Repo/blob/master/MSB%20Breakdown/icon/Hover_leaflet.png?raw=true") no-repeat;
+    }
+        /* ============================ */
+        .machine {
+        align-content: center;
+        width: 175px;
+        height: 150px;
+        
+
+        background: url("https://github.com/CTopham/Personal-Repo/blob/master/MSB%20Breakdown/icon/ML.png?raw=true") no-repeat;
+        display: inline-block;
+        
+    }
+    .machine:hover {
+        background: url("https://github.com/CTopham/Personal-Repo/blob/master/MSB%20Breakdown/icon/hover_ml.png?raw=true") no-repeat;
+    }
+        /* ============================ */
+            .api {
+        align-content: center;
+        width: 175px;
+        height: 140px;
+       
+
+        background: url("https://github.com/CTopham/Personal-Repo/blob/master/MSB%20Breakdown/icon/api.png?raw=true") no-repeat;
+        display: inline-block;
+        
+    }
+    .api:hover {
+        background: url("https://github.com/CTopham/Personal-Repo/blob/master/MSB%20Breakdown/icon/hover_api.png?raw=true") no-repeat;
+    }
+            /* ============================ */
+            .table {
+        align-content: center;
+        width: 175px;
+        height: 140px;
+
+        background: url("https://github.com/CTopham/Personal-Repo/blob/master/MSB%20Breakdown/icon/tble.png?raw=true") no-repeat;
+        display: inline-block;
+        
+    }
+    .table:hover {
+        background: url("https://github.com/CTopham/Personal-Repo/blob/master/MSB%20Breakdown/icon/hover_table.png?raw=true") no-repeat;
+    }
+</style>
+<!-- ==================End of Hover CSS============================ -->
+<!-- =====================================Code Examples Panel=========================================        -->
+<style>
+    body {
+        font-family: "Lato", sans-serif;
+    }
+    
+    .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+    
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+    
+    .sidenav a:hover {
+        color: #f1f1f1;
+    }
+    
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+    .paneltext {
+        color: #f1f1f1
+    }
+    
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+    }
+    </style>
+    <!-- ===================================== End Code Examples Panel=========================================        -->
+<body>
+
+<!-- =======================Nav Bar Buttons======================== -->
+<center>
+    <a class="home" style="padding-left: 30px" href="http://127.0.0.1:5000/"></a>
+    <a class="leaflet" style="padding-left: 30px" href="http://127.0.0.1:5000/Leaflet"></a>
+    <a class="machine" style="padding-left: 30px" href="http://127.0.0.1:5000/Machine"></a>
+    <a class="api" href="http://127.0.0.1:5000/api"></a>
+    <a class="table" href="http://127.0.0.1:5000/Table"></a>
+    </center>
+    </div>
+        </nav>
+        <div class="bg" style="padding-top:100px">
+<div>
+ <!-- =====================================Code Examples Panel=========================================        -->
+    <span id="paneltext" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Code Examples</span>
+
+        <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <center>
+                <img src="https://github.com/CTopham/Personal-Repo/blob/master/MSB%20Breakdown/icon/fitpic.png?raw=true" alt="Prediction">
+                <img src="https://github.com/CTopham/Personal-Repo/blob/master/MSB%20Breakdown/icon/predictcode.png?raw=true" alt="Prediction">
+            </center>
+              </div>
+<!-- ===================================== End Code Examples Panel=========================================        -->
+<center>
+    <img style="padding-bottom: 500px" src="https://github.com/CTopham/Personal-Repo/blob/master/MSB%20Breakdown/icon/predict_example.png?raw=true" alt="Prediction">
+</center>
+</div>
+
+</body>
+</html>
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "100%";
+    }
+    
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+    </script>
