@@ -1,3 +1,4 @@
+pip install Flask-SQLAlchemy
 import os
 import json
 import datetime as dt
