@@ -1,0 +1,11 @@
+version: '2'
+services:
+  zjqab-postgresql:
+    image: postgres:11.4
+    # volumes:
+    #     - ~/volumes/jhipster/zjqab/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=zjqab
+      - POSTGRES_PASSWORD=
+    ports:
+      - 5432:5432

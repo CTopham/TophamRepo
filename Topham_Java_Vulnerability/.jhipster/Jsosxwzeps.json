@@ -1,0 +1,14 @@
+{"entityTableName":"ps",
+ "service":"serviceImpl",
+ "dto":false,
+ "fields":
+ [{"fieldName":"dcnzfaKVVGZ", "fieldType":"Long"},
+  {"fieldName":"wjuPKS", "fieldType":"BigDecimal"}],
+ "clientRootFolder":"",
+ "fluentMethods":true,
+ "searchEngine":true,
+ "changelogDate":"37260764246458",
+ "pagination":"pagination",
+ "jpaMetamodelFiltering":false,
+ "databaseType":"sql",
+ "relationships":[]}

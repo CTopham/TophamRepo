@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <!--
+        Added the entity Cwgkt.
+    -->
+    <changeSet id="25600634032353-1" author="jhipster">
+        <createTable tableName="avhbaz">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="datqyrd_ssuvsl" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="xiuoes_wmto" type="decimal(21,2)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="wjmkg_okzehamr" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="iwppb_n" type="decimal(21,2)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="uwz_pkal" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="gjd_z" type="boolean">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="kn_yeodex" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="hecwx_jsyqpcp" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="qiesctruz_nqsqqfkxr" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="ecst_kppenuel" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="rygwc_tqg" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="zusr_w" type="boolean">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="xmid_vonel" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="msolwy_owv" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="oyepo_aoiuc" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="whmhgtjcf_gvtdze" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="immak_fg" type="decimal(21,2)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="jbagf_jnan" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+
+        <dropDefaultValue tableName="avhbaz" columnName="wjmkg_okzehamr" columnDataType="datetime"/>
+        <dropDefaultValue tableName="avhbaz" columnName="hecwx_jsyqpcp" columnDataType="datetime"/>
+        <dropDefaultValue tableName="avhbaz" columnName="whmhgtjcf_gvtdze" columnDataType="datetime"/>
+    </changeSet>
+
+    <changeSet id="25600634032353-1-relations" author="jhipster">
+
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="25600634032353-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/avhbaz.csv"
+                  separator=";"
+                  tableName="avhbaz">
+            <column name="id" type="numeric"/>
+            <column name="datqyrd_ssuvsl" type="numeric"/>
+            <column name="xiuoes_wmto" type="numeric"/>
+            <column name="wjmkg_okzehamr" type="datetime"/>
+            <column name="iwppb_n" type="numeric"/>
+            <column name="uwz_pkal" type="date"/>
+            <column name="gjd_z" type="boolean"/>
+            <column name="kn_yeodex" type="numeric"/>
+            <column name="hecwx_jsyqpcp" type="datetime"/>
+            <column name="qiesctruz_nqsqqfkxr" type="string"/>
+            <column name="ecst_kppenuel" type="numeric"/>
+            <column name="rygwc_tqg" type="string"/>
+            <column name="zusr_w" type="boolean"/>
+            <column name="xmid_vonel" type="numeric"/>
+            <column name="msolwy_owv" type="numeric"/>
+            <column name="oyepo_aoiuc" type="numeric"/>
+            <column name="whmhgtjcf_gvtdze" type="datetime"/>
+            <column name="immak_fg" type="numeric"/>
+            <column name="jbagf_jnan" type="numeric"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

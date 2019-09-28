@@ -1,0 +1,40 @@
+{
+  "generator-jhipster": {
+    "enableTranslation": false,
+    "packageName": "grlmkb.wjw.vowri.bfkk",
+    "clientPackageManager": "npm",
+    "websocket": false,
+    "enableHibernateCache": false,
+    "entitySuffix": "",
+    "buildTool": "gradle",
+    "dtoSuffix": "DTO",
+    "prodDatabaseType": "postgresql",
+    "nativeLanguage": "en",
+    "baseName": "zjqab",
+    "serviceDiscoveryType": false,
+    "otherModules": [],
+    "cacheProvider": "ehcache",
+    "jhipsterVersion": "6.2.0",
+    "testFramework": [],
+    "devDatabaseType": "h2Disk",
+    "messageBroker": true,
+    "enableSwaggerCodegen": false,
+    "promptValues": {
+      "packageName": "grlmkb.wjw.vowri.bfkk",
+      "nativeLanguage": "en"
+    },
+    "searchEngine": false,
+    "useSass": true,
+    "applicationType": "monolith",
+    "authenticationType": "session",
+    "serverPort": 8080,
+    "packageFolder": "grlmkb/wjw/vowri/bfkk",
+    "databaseType": "sql",
+    "rememberMeKey": "xe7992ul6d5j1tigldcxpt1wa0yx5wb8sj5x2m2ufalgncbl54fz3kq7o5a",
+    "clientFramework": "react",
+    "jhiPrefix": "ofoqm",
+    "languages": ["en"],
+    "clientTheme": "none",
+    "blueprints": []
+  }
+}

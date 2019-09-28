@@ -1,0 +1,12 @@
+{"entityTableName":"bvbzjpwc",
+ "service":"serviceImpl",
+ "dto":true,
+ "fields":[],
+ "clientRootFolder":"",
+ "fluentMethods":false,
+ "searchEngine":true,
+ "changelogDate":"58550008882215",
+ "pagination":"pagination",
+ "jpaMetamodelFiltering":false,
+ "databaseType":"sql",
+ "relationships":[]}
