@@ -5,7 +5,12 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 import pandas as pd
 import numpy as np
-
+from shodan import Shodan
+import shodan
+import sys
+import socket 
+#Keys to the kingdom
+from Config import API
 # Executing Chrome Driver for auto navigation to click links
 
 
@@ -59,7 +64,7 @@ def scrape():
 
 # Grabbing Tweet
     time.sleep(8)
-    url = "https://twitter.com/marswxreport?lang=en"
+    url = "https://twitter.com/cyber?lang=en"
     browser.visit(url)
     time.sleep(7)
     html = browser.html
@@ -138,3 +143,12 @@ def scrape():
     listing['vm_img'] = all_Images.find('a', href=True)['href']
     
     return listing
+
+def ipcheck():
+
+    API_KEY  = Shodan(API)
+    # host_name = socket.gethostname() 
+    # host_ip = socket.gethostbyname(host_name) 
+    ipinfo = API_KEY.host('174.72.222.20')
+
+    return ipinfo
