@@ -4,150 +4,269 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mars Data</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/main.css"/>
+    <link rel="stylesheet" href="node_modules/xterm/css/xterm.css" />
+    <link rel="stylesheet" href="C:\Users\14804\Documents\Vanderbilt\Software Engineering Security\Final2\static\slider.csss">
+    <script src="node_modules/xterm/lib/xterm.js"></script>
+    <script src="C:\Users\14804\Documents\Vanderbilt\Software Engineering Security\Final2\static\Slider.js"></script>
+    <style>
+        * {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+    </style>
 </head>
 <body>
-        <div class="container">
 
-                <div class="jumbotron text-center">
-                  <h1>RINSD</h1>
-                  <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Mars Data</a></p>
-                  <p><a class="btn btn-primary btn-lg" href="/ipcheck" role="button">IP Check </a></p>
-                </div>
+  	<!-- Header -->
+      <header id="header" class="alt">
+        <a href="#menu">Menu</a>
+    </header>
 
-                    <!-- Craigslist Listings -->
-            <div class="row">
-            <div class="col-sm-9">
-        
-              <h2 class="heading">{{listing.News_Title}}</h2>
-              <h4 class="heading">{{listing.Newsp}}</h4>
-            
- <!--  ++++++++++++++++++++++++++++++++test+++++++++++++++++++++++++++++++++++++++++++++++++++   --> 
- <br>
- <br>
- <div style = padding-left:80px;>
- <img src= {{ listing.featured_image_url }} width= "650" height="400" alt="Featured Mars Image">
-</div>
-</div>
- <!--  ++++++++++++++++++++++++++++++++test+++++++++++++++++++++++++++++++++++++++++++++++++++   -->
-            <div class="col-sm-3">
-                    <div class="panel panel-default">
-                            <div class="panel-heading">Marshan Weather</div>
-                            <div class="panel-body">
-                            <p font-size: 30px>{{listing.New_Tweet}}</p>
-                            
-<!--  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   -->
-                            <table border="1" class="dataframe">
-                                <thead>
-                                  <tr style="text-align: right;">
-                                    <th></th>
+    <nav id="menu">
+            <ul class="links">
+                <li><a href="/">Home</a></li>
+                <li><a href="catalog">Catalog</a></li>
+                <li><a href="video">Video</a></li>
+            </ul>
+        </nav>
 
-                                  </tr>
-                                </thead>
-                                
-                                <tbody>
-                                  <tr>
-                                    
-                                    <td>Equatorial Diameter:</td>
-                                    <td>6,792 km\n</td>
-                                  </tr>
-                                  <tr>
-                                   
-                                    <td>Polar Diameter:</td>
-                                    <td>6,752 km\n</td>
-                                  </tr>
-                                  <tr>
-                                    
-                                    <td>Mass:</td>
-                                    <td>6.42 x 10^23 kg (10.7% Earth)</td>
-                                  </tr>
-                                  <tr>
-                                    
-                                    <td>Moons:</td>
-                                    <td>2 (Phobos &amp; Deimos)</td>
-                                  </tr>
-                                  <tr>
-                                   
-                                    <td>Orbit Distance:</td>
-                                    <td>227,943,824 km (1.52 AU)</td>
-                                  </tr>
-                                  <tr>
-                                   
-                                    <td>Orbit Period:</td>
-                                    <td>687 days (1.9 years)\n</td>
-                                  </tr>
-                                  <tr>
-                                    
-                                    <td>Surface Temperature:</td>
-                                    <td>-153 to 20 �C</td>
-                                  </tr>
-                                  <tr>
-                                    
-                                    <td>First Record:</td>
-                                    <td>2nd millennium BC</td>
-                                  </tr>
-                                  <tr>
-                                    
-                                    <td>Recorded By:</td>
-                                    <td>Egyptian astronomers</td>
-                                  </tr>
-                                </tbody>
-                        </table>
-<!--  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   -->
+<!-- Banner -->
+    <section id="banner">
+        <div class="inner">
+            <header>
+                <h1>RINSD</h1>
+                <p font-size: 30px>{{listing.New_Tweet}}</p>
+            </header>
+            <p><a class="button big scrolly" href="/ipcheck" role="button">IP Check </a></p>
+            <p><a class="button big scrolly" href="/tweet" role="button">Tweet </a></p>
+           
+        </div>
+    </section>
+<div>
+&nbsp;
+&nbsp;
 </div>
+<div>
+&nbsp;
+&nbsp;
 </div>
+<div>
+&nbsp;
+&nbsp;
 </div>
+<div>
+&nbsp;
+&nbsp;
+</div> 
+<div>
+&nbsp;
+&nbsp;
+</div>   
+
+
+
+    <!-- Slideshow container -->
+<div class="slideshow-container">
+
+    <!-- Full-width images with number and caption text -->
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 9</div>
+      <img src="../static/Slide1.jpg" style="width:100%">
+     
+    </div>
   
-<!--  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   -->
-        
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 9</div>
+      <img src="../static/Slide2.jpg" style="width:70%">
+    
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 9</div>
+      <img src="../static/Slide3.jpg" style="width:100%">
 
-<div class="col-sm-12">
-        <div class="panel panel-default">
-        <div class= "panel-heading text-center panel-relative"><bold>Mars Photos</bold></div>
-        <div class="panel-body">
+    </div>
 
-<div class="row">
-<div class="col-sm-6">
-        <div class="panel panel-default">
-        <div class="panel-heading">{{listing.cerb_title}}</div>
-        <div class="panel-body"style = padding-left:80px;>
-        <img src= {{ listing.cerb_img }}width= "750" height="400" alt="Cerberus">
+    <div class="mySlides fade">
+      <div class="numbertext">4 / 9</div>
+      <img src="../static/Slide4.jpg" style="width:100%">
+    
+    </div>
 
-</div>   
-</div>
-</div>
+    <div class="mySlides fade">
+      <div class="numbertext">5 / 9</div>
+      <img src="../static/Slide5.jpg" style="width:100%">
+     
+    </div>
 
-<div class="col-sm-6">
-                <div class="panel panel-default">
-                <div class="panel-heading">{{listing.vm_title}}</div>
-                <div class="panel-body"style = padding-left:80px;>
-                <img src= {{ listing.vm_img }}width= "750" height="400" alt="VM">
+    <div class="mySlides fade">
+      <div class="numbertext">6 / 9</div>
+      <img src="../static/Slide6.jpg" style="width:100%">
+      
+    </div>
 
+    <div class="mySlides fade">
+      <div class="numbertext">7 / 9</div>
+      <img src="../static/Slide7.jpg" style="width:100%">
+    
+    </div>
 
-<!--  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   -->
-</div>   
-</div>
-</div>
-<div class="row">
-                <div class="col-sm-6">
-                        <div class="panel panel-default">
-                        <div class="panel-heading">{{listing.schia_title}}</div>
-                        <div class="panel-body"style = padding-left:80px;>
-                        <img src= {{ listing.schia_img }}width= "750" height="400" alt="Schia">
-                
-                </div>   
-                </div>
-                </div>
-                
-                <div class="col-sm-6">
-                                <div class="panel panel-default">
-                                <div class="panel-heading">{{listing.syrtus_title}}</div>
-                                <div class="panel-body"style = padding-left:80px;>
-                                <img src= {{ listing.syrtus_img }}width= "750" height="400" alt="Syrtus">
+    <div class="mySlides fade">
+      <div class="numbertext">8 / 9</div>
+      <img src="../static/Slide8.jpg" style="width:100%">
+    
+    </div>
 
-
-
-
+    <div class="mySlides fade">
+      <div class="numbertext">9 / 9</div>
+      <img src="../static/Slide9.jpg" style="width:100%">
+      
+    </div>
+  
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <br>
+  
+  <!-- The dots/circles -->
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+  </div>
+    
+    
 </body>
+
+<script>
+    var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+</script>
+
+		<!-- Scripts -->
+        <script src="../static/jquery.min.js"></script>
+        <script src="../static/jquery.scrolly.min.js"></script>
+        <script src="../static/jquery.scrollex.min.js"></script>
+        <script src="../static/skel.min.js"></script>
+        <script src="../static/util.js"></script>
+        <script src="../static/main.js"></script>
 </html>
