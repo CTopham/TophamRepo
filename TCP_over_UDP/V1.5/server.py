@@ -1,15 +1,13 @@
 import socket
 import utils
-from utils import States
-from utils import Header
 
-#Craig Topham PA3 Computer Networking
 
 UDP_IP = "127.0.0.1"
 UDP_PORT = 5005
 
+#Craig Topham
 # initial server_state
-server_state = States.CLOSED
+server_state = utils.States.CLOSED
 last_received_seq_num = 0 
 
 sock = socket.socket(socket.AF_INET,    # Internet
@@ -40,10 +38,10 @@ def recv_msg():
 # You will need to add more states, please update the possible
 # states in utils.py file
 while True:
-  if server_state == States.CLOSED:
+  if server_state == utils.States.CLOSED:
     # we already started listening, just update the state
-    update_server_state(States.LISTEN)
-  elif server_state == States.LISTEN:
+    update_server_state(utils.States.LISTEN)
+  elif server_state == utils.States.LISTEN:
     # we are waiting for a message
     header, body, addr = recv_msg()
     last_received_seq_num = header.seq_num
@@ -55,26 +53,27 @@ while True:
       last_received_seq_num + 1, syn =1, ack = 1, fin = 0)
       seq_number += 1
       sock.sendto(syn_ack_msg.bits(), addr)
-      update_server_state(States.SYN_RECEIVED)
-      #ack_number = header.seq_num + 1*************************************
+      update_server_state(utils.States.SYN_RECEIVED)
+      ack_number = header.seq_num + 1
+      chunk = utils
+
       # to be implemented
       
-
       ### sending message from the server:
       #   use the following method to send messages back to client
       #   addr is recieved when we receive a message from a client (see above)
       #   sock.sendto(your_header_object.bits(), addr)
       
 
-  elif server_state == States.SYN_RECEIVED:
+  elif server_state == utils.States.SYN_RECEIVED:
       header, body, addr = recv_msg()
       last_received_seq_num = header.seq_num
       if header.ack == 1:
-          update_server_state(States.ESTABLISHED)
+          update_server_state(utils.States.ESTABLISHED)
           pass
-  elif server_state == States.SYN_SENT:
+  elif server_state == utils.States.SYN_SENT:
       pass
-  elif server_state == States.ESTABLISHED:
+  elif server_state == utils.States.ESTABLISHED:
       header, body, addr = recv_msg()
       last_received_seq_num = header.seq_num
       if header.fin == 1:
@@ -82,24 +81,26 @@ while True:
           last_received_seq_num + 1, syn = 0, ack = 1, fin = 0)
           seq_number += 1
           sock.sendto(fin_ack_msg.bits(), addr)
-          update_server_state(States.CLOSE_WAIT)
-      else:                                                               #PA3
-        returnmsg = "sent ack"
-        ack_msg = utils.Header(seq_number,last_received_seq_num + 1, syn = 1, ack = 1, fin = 0)
-        seq_number += 1
-        sock.sendto(ack_msg.bits() + returnmsg.encode(), addr)
-        print(body[1:])
-        pass
-  elif server_state == States.CLOSE_WAIT:
+          update_server_state(utils.States.CLOSE_WAIT)
+      else:
+          chunk.receive_ack()
+          bits_received = len(body)
+          ack_msg = utils.Header(seq_number,
+          last_received_seq_num + 1, syn = 0, ack = 1, fin = 0)
+          seq_number += 1
+          sock.sendto(ack_msg.bits(), addr)
+          chunk.receives_ack()
+          
+  elif server_state == utils.States.CLOSE_WAIT:
       fin_fin_msg = utils.Header(seq_number,
       last_received_seq_num + 1, syn = 0, ack = 1, fin = 1)
       seq_number += 1
       sock.sendto(fin_fin_msg.bits(), addr)
-      update_server_state(States.LAST_ACK)
-  elif server_state == States.LAST_ACK:
+      update_server_state(utils.States.LAST_ACK)
+  elif server_state == utils.States.LAST_ACK:
       header, body, addr = recv_msg()
       last_received_seq_num = header.seq_num
       if header.ack == 1:
-          update_server_state(States.CLOSED)
+          update_server_state(utils.States.CLOSED)
   else:
       pass

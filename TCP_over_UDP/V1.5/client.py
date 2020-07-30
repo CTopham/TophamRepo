@@ -7,21 +7,14 @@ import socket
 import time
 import utils
 
-#Craig Topham PA3 Computer Networking
-
+#Craig Topham
 #UDP_IP = "54.221.233.70"
 UDP_IP = "127.0.0.1"
 UDP_PORT = 5005
-MSS = 14 # maximum segment size
+MSS = 12 # maximum segment size
 
 sock = socket.socket(socket.AF_INET,    # Internet
                      socket.SOCK_DGRAM) # UDP
-
-def recv_msg():
-  data, addr = sock.recvfrom(1024)
-  header = utils.bits_to_header(data)
-  body = utils.get_body_from_data(data)
-  return (header, body, addr)
 
 #
 def send_udp(message):
@@ -87,46 +80,32 @@ class Client:
     self.client_state = new_state
 
   def send_reliable_message(self, message):
-    count= 0
-    MSS = 2
-
-    # split the message into chunks
+    # send messages
+    # we loop/wait until we receive all ack.
+    self.receive_acks()
+    count = 0
     msg = message.split()
-
-    #seq number
-    seq_num = utils.rand_int()
-
-    # Create the header we attach to our message
-    msg_header = utils.Header(seq_num, 0, syn = 0, ack = 1, fin = 0)
-
-    # Send initial chunk
-    chunk = msg[count:count + 3]
-    chunk = ','.join(chunk[0:2])
-    send_udp(msg_header.bits() + chunk.replace(",", " ").encode())
-    count += 2
-  
-    while count <= 7:
-      #handle seq / ack 
-      recv_data, addr = sock.recvfrom(1024) #receive the data sent from the server
-      msg_header = utils.bits_to_header(recv_data) #convert received data to header format
-      firstseq = msg_header.seq_num  # first msg seq number
-      if msg_header.seq_num == firstseq or msg_header.seq_num == subseq:  #check current seq numb from previous, make sure increments by 1
-        chunk = msg[MSS:MSS + 3] # 
+    while count <= 6:
+        chunk = msg[count:count + 3]
         chunk = ','.join(chunk[0:2])
-        send_udp(msg_header.bits() + chunk.replace(",", " ").encode())
+        chunk.replace(",", " ")
+        print(chunk.replace(",", " "))
+        try:
+            recv_data, addr = sock.recvfrom(1024)
+            ack_header = utils.bits_to_header(recv_data)
+        except socket.timeout:
+            self.next_seq_num -= MSS
+            continue
+        if ack_header.ack_num != self.next_seq_num:
+            self.next_seq_num -= MSS
+            continue
+        self.last_received_seq_num = ack_header.seq_num
         count += 2
-        MSS += 2
-        subseq = msg_header.seq_num + 1
-      else: #if seq are not incrementing correctly then send previous chunk again
-        print(msg_header.seq_num) #just printing out the seq number
-        MSS -= 2
-        chunk = msg[MSS:MSS - 3] # 
-        chunk = ','.join(chunk[0:2])
-        send_udp(msg_header.bits() + chunk.replace(",", " ").encode())
+
+   
 
 
-    #handle stop and wait
-    pass
+
 
   # these two methods/function can be used receive messages from
   # server. the reason we need such mechanism is `recv` blocking
@@ -164,6 +143,9 @@ class Client:
 # we create a client, which establishes a connection
 client = Client()
 # we send a message
-client.send_reliable_message("This message is to be received in pieces")
+client.send_reliable_message("This message To be received in chunks")
+
+#for i in range (0,100):
+#    client.send_reliable_message("test00 test01 test02 test03 test04 test05")
 # we terminate the connection
 client.terminate()
